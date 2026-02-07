@@ -1,0 +1,524 @@
+﻿<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Okolo Náboje s PraSátkem 2026</title>
+    <meta
+      name="description"
+      content="Třídenní matematický doprovodný program k soutěži Náboj v Praze, 12.–14. února 2026."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://prase.cz/images/favicon.ico"
+      type="image/x-icon"
+      rel="shortcut icon"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --brown-dark: #2c1810;
+        --brown: #6b4226;
+        --brown-warm: #8b6914;
+        --cream: #faf3e0;
+        --cream-dark: #f0e6cc;
+        --sky: #5b8fb9;
+        --sky-light: #8bbbd9;
+        --sky-dark: #3a6e94;
+        --accent: #d4882b;
+        --warm-tan: #e2d3b5;
+        --text: #2c1810;
+        --text-muted: #5c4a3a;
+      }
+
+      html {
+        font-size: clamp(13px, 0.5vw + 11px, 16px);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          "Nunito",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: var(--text);
+        background: var(--cream);
+        line-height: 1.7;
+        font-size: 1rem;
+      }
+
+      .container {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      section {
+        padding: 3.5rem 0;
+      }
+
+      nav {
+        background: var(--brown-dark);
+        padding: 0.8rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      nav .container {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: var(--cream);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.25rem;
+        letter-spacing: 0.02em;
+        transition: color 0.2s;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        background: url("background.png") center bottom / cover no-repeat;
+        color: white;
+        text-align: center;
+        padding: 6rem 0 8rem;
+        border-top: none;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(58, 110, 148, 0.75) 0%,
+          rgba(30, 30, 30, 0.45) 50%,
+          rgba(0, 0, 0, 0.3) 100%
+        );
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 8vw, 5rem);
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+        text-shadow:
+          0 0 30px rgba(255, 255, 255, 0.4),
+          0 2px 4px rgba(0, 0, 0, 0.6),
+          0 4px 16px rgba(0, 0, 0, 0.4),
+          0 8px 32px rgba(0, 0, 0, 0.2);
+        -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.3);
+      }
+
+      .hero .date {
+        display: inline-block;
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        letter-spacing: 0.06em;
+        color: white;
+        background: rgba(212, 136, 43, 0.7);
+        padding: 0.35rem 1.4rem;
+        border-radius: 2rem;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero .highlights {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .hero .highlight-tag {
+        background: rgba(0, 0, 0, 0.4);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        padding: 0.4rem 1rem;
+        border-radius: 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--brown-dark);
+        margin-bottom: 1.2rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--brown-warm);
+        margin-top: 1.8rem;
+        margin-bottom: 0.6rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .info-card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem 1.3rem 1.2rem;
+        box-shadow: 0 4px 16px rgba(44, 24, 16, 0.07);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .info-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--sky), var(--accent));
+      }
+
+      .info-card strong {
+        display: block;
+        color: var(--brown);
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+      }
+
+      .info-card span {
+        color: var(--text);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .cta-wrap {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      .cta {
+        display: inline-block;
+        background: var(--accent);
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.25rem;
+        padding: 0.9rem 2.4rem;
+        border-radius: 2rem;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        box-shadow: 0 4px 12px rgba(212, 136, 43, 0.3);
+      }
+
+      .cta:hover {
+        background: var(--brown-warm);
+        transform: translateY(-1px);
+      }
+
+      .contact-line {
+        margin-top: 1.25rem;
+        font-size: 1rem;
+        color: var(--text-muted);
+      }
+
+      .contact-line a {
+        color: var(--brown);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .contact-line a:hover {
+        color: var(--accent);
+      }
+
+      #prihlaseni {
+        background: var(--cream-dark);
+      }
+
+      .rules-section {
+        background: var(--warm-tan);
+      }
+
+      .rules-section p {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .rules-section ul {
+        list-style: disc;
+        padding-left: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .rules-section li {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 0.5rem;
+      }
+
+      footer {
+        background: var(--brown-dark);
+        color: var(--cream);
+        padding: 2.5rem 0;
+        text-align: center;
+      }
+
+      footer p {
+        font-size: 0.75rem;
+        opacity: 0.7;
+        margin-top: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: var(--cream);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
+      @media (max-width: 600px) {
+        section {
+          padding: 2.5rem 0;
+        }
+        .hero {
+          padding: 3.5rem 0 3rem;
+        }
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <a href="#o-akci">O akci</a>
+        <a href="#prihlaseni">Přihlášení</a>
+        <a href="#pravidla">Pravidla</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Okolo Náboje<br />s PraSátkem</h1>
+        <div class="date">12.–14. února 2026</div>
+        <div class="highlights">
+          <span class="highlight-tag">📐 Matfyz</span>
+          <span class="highlight-tag">🏙️ Hra po Praze</span>
+          <span class="highlight-tag">🥾 Výlet</span>
+          <span class="highlight-tag">🎓 Přednášky</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="o-akci">
+      <div class="container">
+        <h2>🐷 O akci</h2>
+        <p>
+          <strong>Okolo Náboje s PraSátkem</strong> je třídenní matematický
+          mimoškolní doprovodný program k soutěži
+          <a href="https://math.naboj.org/" target="_blank">Náboj</a>, pořádaný
+          <a href="https://spoko.one/" target="_blank"
+            >Spolkem korespondenčních seminářů</a
+          >.
+        </p>
+        <p>
+          Akce je určena pro středoškolské studenty, kteří jsou zároveň
+          účastníky soutěže Náboj v Praze. Můžete se těšit na návštěvu Matfyzu,
+          velkou hru po Praze, výlet do blízkého okolí Prahy a zajímavé
+          matematické přednášky.
+        </p>
+        <p>V ceně je zahrnuto ubytování a stravování.</p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <strong>📅 Kdy</strong>
+            <span>12.–14. února 2026</span>
+          </div>
+          <div class="info-card">
+            <strong>📍 Kde</strong>
+            <span>TOP Hotel Praha</span>
+          </div>
+          <div class="info-card">
+            <strong>💰 Cena</strong>
+            <span>500–1 000 Kč</span>
+          </div>
+          <div class="info-card">
+            <strong>👥 Kapacita</strong>
+            <span>50 + 10 míst</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prihlaseni">
+      <div class="container">
+        <h2>✍️ Přihlášení</h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <strong>🟢 Začátek přihlašování</strong>
+            <span>9. února 2026, 12:00</span>
+          </div>
+          <div class="info-card">
+            <strong>🔴 Konec přihlašování</strong>
+            <span>25. února 2026, 12:00</span>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem">
+          Prvních 50 přihlášených mimopražských účastníků Náboje získává místo
+          na Akci. Dalších 10 studentů pražských škol se může zúčastnit programu
+          za snížený poplatek (bez ubytování v TOP Hotelu Praha).
+        </p>
+
+        <div class="cta-wrap">
+          <a href="#" class="cta">Přihlásit se →</a>
+          <p class="contact-line">
+            ✉️ Máte dotazy? Napište nám na
+            <a href="mailto:akce@spoko.one">akce@spoko.one</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pravidla" class="rules-section">
+      <div class="container">
+        <h2>⚖️ Pravidla</h2>
+
+        <h3>Přihlašování</h3>
+        <ul>
+          <li>
+            Přihláška je závazná, její zrušení ze strany účastníka je nutné
+            bezprostředně nahlásit.
+          </li>
+          <li>
+            V přihlášce je nutné vyplnit, zda účastník dochází do školy sídlící
+            v Praze (dále jen pražská škola) nebo nikoliv.
+          </li>
+          <li>
+            Po uzavření přihlašování se prvních 50 přihlášených v pořadí
+            přihlášení, kteří jsou účastníky Náboje a zároveň nedochází do
+            pražské školy, stávají účastníky Akce a je jim poslána zálohová
+            faktura se splatností do 2. března 2026.
+          </li>
+          <li>
+            V případě, že se nepřihlásí dostatek studentů jiných než pražských
+            škol, účastníky akce se stávají i studenti pražských škol. Ostatní
+            přihlášení se dostávají na seznam náhradníků, v pořadí přihlášení.
+          </li>
+          <li>
+            Pokud v tomto termínu faktura není zaplacena, přihláška propadá a je
+            osloven další náhradník.
+          </li>
+          <li>
+            K tomuto je navíc osloveno 10 studentů pražských škol (v pořadí
+            přihlášení), kteří se mohou zúčastnit programu Akce, ale nebude jim
+            nabídnuto ubytování v TOP Hotelu Praha. Tito studenti se akce
+            účastní za snížený účastnický poplatek.
+          </li>
+          <li>
+            Pokud před Akcí účastník zjistí, že se jí nemůže zúčastnit, může mu
+            být vrácena záloha za účastnický poplatek v případě, že jeho místo
+            zaujme náhradník. Jinak je vrácení zálohy dáno rozhodnutím
+            Pořadatele s přihlédnutím k jeho finančním možnostem.
+          </li>
+        </ul>
+
+        <h3>Průběh Akce</h3>
+        <ul>
+          <li>
+            Účastníci Akce dbají pokynů organizátorů Akce, které určí Pořadatel.
+            Bez souhlasu organizátorů není možné se volně pohybovat.
+          </li>
+          <li>
+            Na Akci je zakázáno požívání alkoholu a jiných návykových látek.
+            Porušení tohoto ustanovení může být potrestáno bezodkladným
+            vyloučením z Akce.
+          </li>
+          <li>
+            Student nebo jeho zákonný zástupce přihlášením souhlasí s tím, že se
+            účastník může volně pohybovat po Praze a jejím okolí.
+          </li>
+          <li>
+            Účastník bere na vědomí, že při svévolném opuštění skupiny nebo
+            porušení vymezeného prostoru přebírá plnou odpovědnost za své
+            jednání a případné následky, neboť se tímto vymaňuje z dosahu
+            náležitého dohledu organizátora.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-links">
+          <a href="https://math.naboj.org/" target="_blank">Náboj</a>
+          <a href="https://spoko.one/" target="_blank">SpoKo</a>
+          <a href="https://prase.cz/" target="_blank">PraSe</a>
+        </div>
+        <p>© 2026 Spolek korespondenčních seminářů</p>
+      </div>
+    </footer>
+  </body>
+</html>
